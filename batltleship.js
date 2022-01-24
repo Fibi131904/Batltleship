@@ -36,8 +36,7 @@ var model = { // ОбЪект модели
      fire: function(guess) {  // Метод получает координаты выстрела
          for (var i = 0; i < this.numShips; i++) {
              var ship = this.ships[i]; // для каждого корабля
-            var locations = ship.locations; //Получаем массив клеток, занимаемых кораблем
-            var index = locations.indexOf(guess); // Метод indexOff ищет в массиве указанное значение locations
+            var index = ship.locations.indexOf(guess);
             if (index >= 0) {
                 ship.hits[index] = 'hit'; // ставим отметку в массив hits
                 return true;
