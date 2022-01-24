@@ -23,7 +23,7 @@ view.displayHit('26');
 
 view.displayMessage('Tap tap, is this thing on?');
 
-var model = {
+var model = { // ОбЪект модели
     bordSize: 7,
     numShips : 3,
     shipsSunk: 0,
@@ -33,9 +33,16 @@ var model = {
      { locations : ['24', '34', '44'], hits: ['', '', ''] },
      { locations : ['10', '11', '12'], hits: ['', '', ''] }],
 
-     fire: function(guess) {
+     fire: function(guess) {  // Метод получает координаты выстрела
          for (var i = 0; i < this.numShips; i++) {
-             var ship = this.ships[i];
+             var ship = this.ships[i]; // для каждого корабля
+            var locations = ship.locations; //Получаем массив клеток, занимаемых кораблем
+            var index = locations.indexOf(guess); // Метод indexOff ищет в массиве указанное значение locations
+            if (index >= 0) {
+                ship.hits[index] = 'hit'; // ставим отметку в массив hits
+                return true;
+            }
          }
+         return false;
      }
 };
